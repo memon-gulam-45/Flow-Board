@@ -43,7 +43,6 @@ html {
 body {
   background-color: var(--bg-color);
   color: white;
-  overflow: hidden;
 }
 
 main {
@@ -57,6 +56,9 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-color);
 }
 
 nav button {
@@ -80,6 +82,7 @@ section {
 section .task-column {
   background-color: var(--bg-button-color);
   flex-grow: 1;
+  width: 100%;
   padding: var(--padding-m);
   display: flex;
   flex-direction: column;
@@ -94,6 +97,8 @@ section .task-column.hover-over {
 }
 
 section .task-column .heading {
+  position: sticky;
+  top: 0;
   width: 100%;
   display: flex;
   align-items: center;
