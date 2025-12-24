@@ -33,3 +33,16 @@ function addDragOnColumn(column) {
 addDragOnColumn(todo);
 addDragOnColumn(progress);
 addDragOnColumn(done);
+
+// Modal functionality
+const toggleModalBtn = document.querySelector("#toggle-modal");
+const modalBg = document.querySelector(".modal .bg");
+const modal = document.querySelector(".modal");
+
+toggleModalBtn.addEventListener("click", () => {
+  modal.classList.add("active");
+});
+
+modalBg.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
