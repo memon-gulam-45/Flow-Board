@@ -38,11 +38,30 @@ addDragOnColumn(done);
 const toggleModalBtn = document.querySelector("#toggle-modal");
 const modalBg = document.querySelector(".modal .bg");
 const modal = document.querySelector(".modal");
+const addTaskBtn = document.querySelector("#add-new-task");
 
 toggleModalBtn.addEventListener("click", () => {
   modal.classList.add("active");
 });
 
 modalBg.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+addTaskBtn.addEventListener("click", () => {
+  const taskTitle = modal.querySelector("#task-title-input").value;
+  const taskDesc = modal.querySelector("#task-desc-input").value;
+
+  const taskDiv = document.createElement("div");
+  taskDiv.className = "task";
+  taskDiv.draggable = true;
+
+  taskDiv.innerHTML = `
+  <h2>${taskTitle}</h2>
+  <p>${taskDesc}</p>
+  <button>Delete</button>
+  `;
+
+  todo.appendChild(taskDiv);
   modal.classList.remove("active");
 });
