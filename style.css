@@ -43,6 +43,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: white;
+  overflow: hidden;
 }
 
 main {
