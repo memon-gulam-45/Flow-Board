@@ -61,7 +61,11 @@ addTaskBtn.addEventListener("click", () => {
   <p>${taskDesc}</p>
   <button>Delete</button>
   `;
-
   todo.appendChild(taskDiv);
+
+  taskDiv.addEventListener("drag", () => {
+    draggedTask = taskDiv;
+  });
+
   modal.classList.remove("active");
 });
