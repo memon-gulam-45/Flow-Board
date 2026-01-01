@@ -6,6 +6,12 @@ const done = document.querySelector("#done");
 let draggedTask = null;
 let columns = [todo, progress, done];
 
+let activeTask = null;
+
+const moveSheet = document.querySelector("#move-sheet");
+const sheetButtons = moveSheet.querySelectorAll("button[data-target]");
+const cancelSheet = moveSheet.querySelector(".cancel");
+
 function addTask(title, desc, column) {
   const taskDiv = document.createElement("div");
   taskDiv.className = "task";
@@ -31,26 +37,12 @@ function addTask(title, desc, column) {
     updateTaskCounts();
   });
 
-  
-const moveBtn = taskDiv.querySelector(".move-btn");
+  const moveBtn = taskDiv.querySelector(".move-btn");
 
-moveBtn.addEventListener("click", () => {
-  const choice = prompt(
-    "Move task to:\n1 = To Do\n2 = In Progress\n3 = Done"
-  );
-
-  let targetColumn = null;
-
-  if (choice === "1") targetColumn = todo;
-  if (choice === "2") targetColumn = progress;
-  if (choice === "3") targetColumn = done;
-
-  if (targetColumn) {
-    targetColumn.appendChild(taskDiv);
-    updateTaskCounts();
-  }
-});
-
+  moveBtn.addEventListener("click", () => {
+    activeTask = taskDiv;
+    moveSheet.classList.add("active");
+  });
 
   return taskDiv;
 }
@@ -71,6 +63,26 @@ function updateTaskCounts() {
     count.innerText = tasksInCol.length;
   });
 }
+
+sheetButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.dataset.target;
+    const targetColumn = document.querySelector(`#${targetId}`);
+
+    if (activeTask && targetColumn) {
+      targetColumn.appendChild(activeTask);
+      updateTaskCounts();
+    }
+
+    activeTask = null;
+    moveSheet.classList.remove("active");
+  });
+});
+
+cancelSheet.addEventListener("click", () => {
+  activeTask = null;
+  moveSheet.classList.remove("active");
+});
 
 if (localStorage.getItem("tasksData")) {
   const data = JSON.parse(localStorage.getItem("tasksData"));
