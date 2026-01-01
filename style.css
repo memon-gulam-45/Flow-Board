@@ -184,3 +184,39 @@ section .task-column .task button {
   width: fit-content;
   align-self: center;
 }
+
+@media (max-width: 480px) {
+  nav {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav .right,
+  nav button {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  section {
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    scroll-snap-type: x mandatory;
+    user-select: none;
+  }
+
+  .task-column {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    min-width: 85vw;    
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    user-select: none;
+  }
+  
+}
