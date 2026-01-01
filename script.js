@@ -14,7 +14,10 @@ function addTask(title, desc, column) {
   taskDiv.innerHTML = `
   <h2>${title}</h2>
   <p>${desc}</p>
-  <button>Delete</button>
+  <div class="task-actions">
+    <button class="move-btn">Move</button>
+    <button class="delete-btn">Delete</button>
+  </div>
   `;
   column.appendChild(taskDiv);
 
@@ -22,11 +25,32 @@ function addTask(title, desc, column) {
     draggedTask = taskDiv;
   });
 
-  const deleteBtn = taskDiv.querySelector("button");
+  const deleteBtn = taskDiv.querySelector(".delete-btn");
   deleteBtn.addEventListener("click", () => {
     taskDiv.remove();
     updateTaskCounts();
   });
+
+  
+const moveBtn = taskDiv.querySelector(".move-btn");
+
+moveBtn.addEventListener("click", () => {
+  const choice = prompt(
+    "Move task to:\n1 = To Do\n2 = In Progress\n3 = Done"
+  );
+
+  let targetColumn = null;
+
+  if (choice === "1") targetColumn = todo;
+  if (choice === "2") targetColumn = progress;
+  if (choice === "3") targetColumn = done;
+
+  if (targetColumn) {
+    targetColumn.appendChild(taskDiv);
+    updateTaskCounts();
+  }
+});
+
 
   return taskDiv;
 }

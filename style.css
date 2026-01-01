@@ -185,6 +185,19 @@ section .task-column .task button {
   align-self: center;
 }
 
+.task-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.task-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
+
 @media (max-width: 480px) {
   nav {
     padding: 1rem;
@@ -210,6 +223,10 @@ section .task-column .task button {
     user-select: none;
   }
 
+  .task {
+    cursor: default;
+  }
+
   .task-column {
     max-height: calc(100vh - 120px);
     overflow-y: auto;
@@ -218,5 +235,4 @@ section .task-column .task button {
     scroll-snap-align: start;
     user-select: none;
   }
-  
 }
