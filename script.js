@@ -149,6 +149,13 @@ const toggleModalBtn = document.querySelector("#toggle-modal");
 const modalBg = document.querySelector(".modal .bg");
 const modal = document.querySelector(".modal");
 const addTaskBtn = document.querySelector("#add-new-task");
+const closeModalBtn = document.querySelector(".close-modal");
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", () => {
+    modal.classList.remove("active");
+  });
+}
 
 toggleModalBtn.addEventListener("click", () => {
   modal.classList.add("active");
