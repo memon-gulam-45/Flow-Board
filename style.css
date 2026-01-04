@@ -43,6 +43,7 @@ html {
 body {
   background-color: var(--bg-color);
   color: white;
+  overflow: hidden;
 }
 
 main {
@@ -52,7 +53,9 @@ main {
 }
 
 nav {
+  margin-top: 5px;
   padding: var(--nav-padding);
+  height: 8%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,8 +64,14 @@ nav {
   background-color: var(--bg-color);
 }
 
+nav .left {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
 nav button {
   background-color: var(--bg-button-color);
+  font-weight: 500;
   border: none;
   outline: none;
   color: var(--primary-text-color);
@@ -72,6 +81,7 @@ nav button {
 }
 
 section {
+  height: 90%;
   padding: var(--section-padding);
   display: flex;
   flex-grow: 1;
@@ -81,6 +91,7 @@ section {
 
 section .task-column {
   background-color: var(--bg-button-color);
+  overflow: auto;
   flex-grow: 1;
   width: 100%;
   padding: var(--padding-m);
@@ -89,6 +100,11 @@ section .task-column {
   gap: var(--padding-m);
   border-radius: var(--border-radius-m);
   transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+section .task-column::-webkit-scrollbar {
+  display: none;
 }
 
 section .task-column.hover-over {
@@ -97,8 +113,8 @@ section .task-column.hover-over {
 }
 
 section .task-column .heading {
-  position: sticky;
-  top: 0;
+  background-color: var(--bg-button-color);
+  padding: var(--padding-m);
   width: 100%;
   display: flex;
   align-items: center;
@@ -259,7 +275,6 @@ section .task-column .task button {
 
 @media (max-width: 480px) {
   nav {
-    padding: 1rem;
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -276,7 +291,12 @@ section .task-column .task button {
 }
 
 @media (max-width: 768px) {
+  nav {
+    margin-bottom: 2rem;
+  }
   section {
+    height: 85%;
+    flex-direction: column;
     overflow-x: auto;
     overflow-y: hidden;
     display: flex;
@@ -291,8 +311,8 @@ section .task-column .task button {
   }
 
   .task-column {
-    max-height: calc(100vh - 120px);
-    overflow-y: auto;
+    max-height: 32%;
+    overflow: auto;
     min-width: 85vw;
     flex-shrink: 0;
     scroll-snap-align: start;
