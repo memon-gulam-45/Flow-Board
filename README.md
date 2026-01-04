@@ -49,6 +49,7 @@ FLOW BOARD
 ├── 📄 index.html
 ├── 📄 manifest.json
 ├── 📄 script.js
+├── 📄 README.md
 ├── 📄 service-worker.js
 └── 📄 style.css
 </pre>
